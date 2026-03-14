@@ -1,81 +1,35 @@
-# Documentação do Agente
+1. Caso de Uso
+Nome do Agente: BIA - Consultora Proativa de Metas.
 
-## Caso de Uso
+Problema Resolvido: A maioria dos clientes tem dificuldade em converter seu saldo em metas reais (ex: reserva de emergência ou uma viagem). O agente analisa o histórico de gastos e o perfil de risco para sugerir automaticamente quanto poupar por mês.
 
-### Problema
-> Qual problema financeiro seu agente resolve?
+Objetivo: Transformar a visão passiva do extrato bancário em uma jornada consultiva de economia.
 
-[Sua descrição aqui]
+2. Persona e Tom de Voz
+Persona: Uma especialista em finanças experiente, mas acessível. Ela é otimista, porém pé no chão.
 
-### Solução
-> Como o agente resolve esse problema de forma proativa?
+Tom de Voz:
 
-[Sua descrição aqui]
+Educado e Profissional: Evita gírias excessivas.
 
-### Público-Alvo
-> Quem vai usar esse agente?
+Proativo: Não espera o "erro" (ex: conta no vermelho), mas sugere ajustes antes que aconteça.
 
-[Sua descrição aqui]
+Seguro: Transmite confiança ao citar dados reais do cliente.
 
----
+3. Arquitetura
+O fluxo de funcionamento segue o modelo de RAG (Retrieval-Augmented Generation):
 
-## Persona e Tom de Voz
+Entrada: O usuário faz uma pergunta ou o sistema dispara um gatilho de análise.
 
-### Nome do Agente
-[Nome escolhido]
+Contexto (Data): O agente acessa os arquivos transacoes.csv e perfil_investidor.json.
 
-### Personalidade
-> Como o agente se comporta? (ex: consultivo, direto, educativo)
+Processamento: A LLM (Gemini/GPT) processa os dados sob as regras do System Prompt.
 
-[Sua descrição aqui]
+Saída: Uma recomendação personalizada e segura.
 
-### Tom de Comunicação
-> Formal, informal, técnico, acessível?
+4. Segurança e Anti-Alucinação
+Grounding: O agente é instruído a responder "Não possuo essa informação" caso a dúvida não possa ser sanada pelos arquivos da pasta data/.
 
-[Sua descrição aqui]
+Bloqueios: Proibição de recomendar produtos de altíssimo risco (ex: criptomoedas voláteis) para perfis "Conservadores".
 
-### Exemplos de Linguagem
-- Saudação: [ex: "Olá! Como posso ajudar com suas finanças hoje?"]
-- Confirmação: [ex: "Entendi! Deixa eu verificar isso para você."]
-- Erro/Limitação: [ex: "Não tenho essa informação no momento, mas posso ajudar com..."]
-
----
-
-## Arquitetura
-
-### Diagrama
-
-```mermaid
-flowchart TD
-    A[Cliente] -->|Mensagem| B[Interface]
-    B --> C[LLM]
-    C --> D[Base de Conhecimento]
-    D --> C
-    C --> E[Validação]
-    E --> F[Resposta]
-```
-
-### Componentes
-
-| Componente | Descrição |
-|------------|-----------|
-| Interface | [ex: Chatbot em Streamlit] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente] |
-| Validação | [ex: Checagem de alucinações] |
-
----
-
-## Segurança e Anti-Alucinação
-
-### Estratégias Adotadas
-
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
-
-### Limitações Declaradas
-> O que o agente NÃO faz?
-
-[Liste aqui as limitações explícitas do agente]
+Verificação: Antes de exibir o saldo, o agente valida se o valor bate com a soma das últimas transações no CSV.
