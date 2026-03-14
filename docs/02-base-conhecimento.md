@@ -1,35 +1,22 @@
-1. Caso de Uso
-Nome do Agente: BIA - Consultora Proativa de Metas.
+# 🗄️ Base de Conhecimento
 
-Problema Resolvido: A maioria dos clientes tem dificuldade em converter seu saldo em metas reais (ex: reserva de emergência ou uma viagem). O agente analisa o histórico de gastos e o perfil de risco para sugerir automaticamente quanto poupar por mês.
+Para que a BIA não "alucine" e forneça respostas precisas, ela utiliza uma base de dados mockados (simulados) organizada da seguinte forma:
 
-Objetivo: Transformar a visão passiva do extrato bancário em uma jornada consultiva de economia.
+## 1. Estrutura dos Dados
 
-2. Persona e Tom de Voz
-Persona: Uma especialista em finanças experiente, mas acessível. Ela é otimista, porém pé no chão.
+| Arquivo | Formato | Descrição e Uso |
+| :--- | :--- | :--- |
+| `transacoes.csv` | CSV | Contém o histórico de compras, datas e categorias. Essencial para a BIA calcular o saldo e identificar padrões de consumo. |
+| `perfil_investidor.json` | JSON | Define se o cliente é Conservador, Moderado ou Arrojado. É o "filtro de segurança" para recomendações. |
+| `produtos_financeiros.json` | JSON | Catálogo de investimentos disponíveis no banco, com taxas e prazos. |
+| `historico_atendimento.csv` | CSV | Registros de interações passadas, permitindo que a BIA tenha memória sobre problemas anteriores. |
 
-Tom de Voz:
+## 2. Estratégia de Recuperação (RAG)
+O agente não tenta "adivinhar" o saldo. O fluxo técnico seguido é:
+1. O sistema lê o arquivo `transacoes.csv`.
+2. Realiza a soma de `Entradas - Saídas`.
+3. Cruza o resultado com o `perfil_investidor.json`.
+4. Gera a resposta baseada exclusivamente nesse cruzamento.
 
-Educado e Profissional: Evita gírias excessivas.
-
-Proativo: Não espera o "erro" (ex: conta no vermelho), mas sugere ajustes antes que aconteça.
-
-Seguro: Transmite confiança ao citar dados reais do cliente.
-
-3. Arquitetura
-O fluxo de funcionamento segue o modelo de RAG (Retrieval-Augmented Generation):
-
-Entrada: O usuário faz uma pergunta ou o sistema dispara um gatilho de análise.
-
-Contexto (Data): O agente acessa os arquivos transacoes.csv e perfil_investidor.json.
-
-Processamento: A LLM (Gemini/GPT) processa os dados sob as regras do System Prompt.
-
-Saída: Uma recomendação personalizada e segura.
-
-4. Segurança e Anti-Alucinação
-Grounding: O agente é instruído a responder "Não possuo essa informação" caso a dúvida não possa ser sanada pelos arquivos da pasta data/.
-
-Bloqueios: Proibição de recomendar produtos de altíssimo risco (ex: criptomoedas voláteis) para perfis "Conservadores".
-
-Verificação: Antes de exibir o saldo, o agente valida se o valor bate com a soma das últimas transações no CSV.
+## 3. Atualização da Base
+Embora os dados sejam estáticos para este protótipo, a arquitetura foi desenhada para suportar atualizações em tempo real via API, permitindo que cada nova transação do cliente alimente instantaneamente o contexto da IA.
