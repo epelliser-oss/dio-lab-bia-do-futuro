@@ -59,3 +59,6 @@ if prompt := st.chat_input("Como posso ajudar com suas finanças hoje?"):
         
         st.markdown(resposta)
         st.session_state.messages.append({"role": "assistant", "content": resposta})
+
+
+        "A aplicação foi desenvolvida em Python utilizando o framework Streamlit para a interface. A lógica de negócio utiliza a biblioteca Pandas para manipulação de dados estruturados (CSV/JSON), garantindo que as respostas da IA sejam fundamentadas em dados reais do cliente (Grounding), evitando alucinações e garantindo precisão nos cálculos financeiros."
