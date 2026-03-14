@@ -1,44 +1,19 @@
-# Pitch (3 minutos)
+# 🎤 Roteiro do Pitch: BIA - Consultora Proativa
 
-> [!TIP]
-> Você pode usar alguns slides pra apoiar no seu Pitch e mostrar sua solução na prática.
- 
-## Roteiro Sugerido
+## 1. O Problema (Aprox. 30 segundos)
+"Olá! Sou aluno do Bootcamp Bradesco GenAI e identifiquei um desafio comum: muitos clientes têm dificuldade em transformar os dados do extrato bancário em decisões práticas. Hoje, os aplicativos são passivos; eles mostram o que você gastou, mas não ajudam a planejar o que vem a seguir."
 
-### 1. O Problema (30 seg)
-> Qual dor do cliente você resolve?
+## 2. A Solução (Aprox. 1 minuto)
+"Minha solução é a evolução da BIA para uma Consultora Proativa. Utilizando IA Generativa e a técnica de RAG (Geração Aumentada por Recuperação), desenvolvi um agente que se conecta diretamente à base de conhecimento do cliente, como o histórico de transações e o perfil de investidor.
 
-[Sua descrição aqui]
+Diferente de um chatbot comum, ela analisa padrões: se identifica um gasto elevado em uma categoria, ela sugere metas de economia e já aponta onde investir esse dinheiro poupado, tudo em tempo real."
 
-### 2. A Solução (1 min)
-> Como seu agente resolve esse problema?
+## 3. Diferenciais e Segurança (Aprox. 1 minuto)
+"A segurança é o pilar deste projeto. No setor financeiro, não podemos permitir alucinações. Por isso, implementei um System Prompt rigoroso com ancoragem de dados (Grounding). 
 
-[Sua descrição aqui]
+Se o dado não existe no arquivo oficial, a BIA não inventa. Além disso, as sugestões de produtos financeiros são filtradas pelo perfil de risco do cliente (Conservador, Moderado ou Arrojado), garantindo que a tecnologia trabalhe sempre a favor da saúde financeira do usuário."
 
-### 3. Demonstração (1 min)
-> Mostre o agente funcionando (pode ser gravação de tela)
-
-[Descreva o que será mostrado]
-
-### 4. Diferencial e Impacto (30 seg)
-> Por que essa solução é inovadora e qual é o impacto dela na sociedade?
-
-[Sua descrição aqui]
-
----
-
-## Checklist do Pitch
-
-- [ ] Duração máxima de 3 minutos
-- [ ] Problema claramente definido
-- [ ] Solução demonstrada na prática
-- [ ] Diferencial explicado
-- [ ] Áudio e vídeo com boa qualidade
-
----
-
-## Link do Vídeo
-
-> Cole aqui o link do seu pitch (YouTube, Loom, Google Drive, etc.)
+## 4. Conclusão (Aprox. 30 segundos)
+"Com este projeto, mostramos como a IA Generativa pode tornar o banco um parceiro consultivo na jornada de vida do cliente. A BIA deixa de ser apenas uma assistente de dúvidas para se tornar uma mentora financeira. Obrigado!"Google Drive, etc.)
 
 [Link do vídeo]
