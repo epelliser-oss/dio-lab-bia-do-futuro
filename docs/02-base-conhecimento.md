@@ -1,55 +1,35 @@
-# Base de Conhecimento
+1. Caso de Uso
+Nome do Agente: BIA - Consultora Proativa de Metas.
 
-## Dados Utilizados
+Problema Resolvido: A maioria dos clientes tem dificuldade em converter seu saldo em metas reais (ex: reserva de emergência ou uma viagem). O agente analisa o histórico de gastos e o perfil de risco para sugerir automaticamente quanto poupar por mês.
 
-Descreva se usou os arquivos da pasta `data`, por exemplo:
+Objetivo: Transformar a visão passiva do extrato bancário em uma jornada consultiva de economia.
 
-| Arquivo | Formato | Utilização no Agente |
-|---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
+2. Persona e Tom de Voz
+Persona: Uma especialista em finanças experiente, mas acessível. Ela é otimista, porém pé no chão.
 
-> [!TIP]
-> **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
+Tom de Voz:
 
----
+Educado e Profissional: Evita gírias excessivas.
 
-## Adaptações nos Dados
+Proativo: Não espera o "erro" (ex: conta no vermelho), mas sugere ajustes antes que aconteça.
 
-> Você modificou ou expandiu os dados mockados? Descreva aqui.
+Seguro: Transmite confiança ao citar dados reais do cliente.
 
-[Sua descrição aqui]
+3. Arquitetura
+O fluxo de funcionamento segue o modelo de RAG (Retrieval-Augmented Generation):
 
----
+Entrada: O usuário faz uma pergunta ou o sistema dispara um gatilho de análise.
 
-## Estratégia de Integração
+Contexto (Data): O agente acessa os arquivos transacoes.csv e perfil_investidor.json.
 
-### Como os dados são carregados?
-> Descreva como seu agente acessa a base de conhecimento.
+Processamento: A LLM (Gemini/GPT) processa os dados sob as regras do System Prompt.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+Saída: Uma recomendação personalizada e segura.
 
-### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
+4. Segurança e Anti-Alucinação
+Grounding: O agente é instruído a responder "Não possuo essa informação" caso a dúvida não possa ser sanada pelos arquivos da pasta data/.
 
-[Sua descrição aqui]
+Bloqueios: Proibição de recomendar produtos de altíssimo risco (ex: criptomoedas voláteis) para perfis "Conservadores".
 
----
-
-## Exemplo de Contexto Montado
-
-> Mostre um exemplo de como os dados são formatados para o agente.
-
-```
-Dados do Cliente:
-- Nome: João Silva
-- Perfil: Moderado
-- Saldo disponível: R$ 5.000
-
-Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
-...
-```
+Verificação: Antes de exibir o saldo, o agente valida se o valor bate com a soma das últimas transações no CSV.
