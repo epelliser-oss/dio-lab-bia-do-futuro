@@ -30,4 +30,4 @@ Para o setor bancário, a precisão é fundamental. Este projeto implementa:
 
 ---
 **Autor:** Eduardo Filho
-**Bootcamp:** Bradesco - GenAI & Dados (Hashtag + DIO)
+**Bootcamp:** Bradesco - GenAI & Dados (DIO)
