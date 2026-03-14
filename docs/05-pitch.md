@@ -16,4 +16,3 @@ Se o dado não existe no arquivo oficial, a BIA não inventa. Além disso, as su
 ## 4. Conclusão (Aprox. 30 segundos)
 "Com este projeto, mostramos como a IA Generativa pode tornar o banco um parceiro consultivo na jornada de vida do cliente. A BIA deixa de ser apenas uma assistente de dúvidas para se tornar uma mentora financeira. Obrigado!"Google Drive, etc.)
 
-[Link do vídeo]
